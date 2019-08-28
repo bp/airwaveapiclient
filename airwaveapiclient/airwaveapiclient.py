@@ -364,6 +364,27 @@ class AirWaveAPIClient(object):
         params = AirWaveAPIClient.urlencode(params)
         return self.session.get(url, verify=False, params=params)
 
+    def campus_search(self, campus_id=None, building_id=None, site_id=None):
+        url = self.api_path('/visualrf/campus.xml')
+        params = {'id': campus_id,
+                  'buildings': building_id,
+                  'sites': site_id}
+        params = AirWaveAPIClient.urlencode(params)
+        return self.session.get(url, verify=False, params=params)
+
+    def building_search(self, building_id=None, site_id=None, ):
+        url = self.api_path('/visualrf/building.xml')
+        params = {'id': building_id,
+                  'sites': site_id}
+        params = AirWaveAPIClient.urlencode(params)
+        return self.session.get(url, verify=False, params=params)
+
+    def site_search(self, site_id=None):
+        url = self.api_path('/visualrf/site.xml')
+        params = {'id': site_id}
+        params = AirWaveAPIClient.urlencode(params)
+        return self.session.get(url, verify=False, params=params)
+
     def latest_report(self, report_definition_id):
         """Latest report information.
 
