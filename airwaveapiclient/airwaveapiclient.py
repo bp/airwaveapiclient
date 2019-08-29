@@ -381,7 +381,7 @@ class AirWaveAPIClient(object):
 
     def site_search(self, site_id=None):
         url = self.api_path('/visualrf/site.xml')
-        params = {'id': site_id}
+        params = {'id': site_id} if site_id else {}
         params = AirWaveAPIClient.urlencode(params)
         return self.session.get(url, verify=False, params=params)
 
